@@ -67,6 +67,24 @@ const Preview = () => {
       
       <div className="space-y-8">
         <div className="border-b pb-4">
+          <h3 className="font-medium mb-2">職缺資訊</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <p className="text-sm text-gray-500">應徵職缺</p>
+              <p>財管商品協銷人員</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">期望月薪</p>
+              <p>{basicInfo.salaryExpectation}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">錄取後可報到日</p>
+              <p>2023-10-01</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="border-b pb-4">
           <h3 className="font-medium mb-2">個人基本資料</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>

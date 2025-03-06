@@ -75,6 +75,23 @@ const JobInformation = () => {
           </select>
         </div>
       </div>
+
+      {/* New salary expectation field */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+        <div>
+          <label htmlFor="salaryExpectation" className="fubon-label">期望月薪 *</label>
+          <div className="flex items-center">
+            <select className="fubon-input" id="salaryExpectation" name="salaryExpectation">
+              <option value="">請選擇</option>
+              <option value="35000-40000">35,000-40,000</option>
+              <option value="40000-45000">40,000-45,000</option>
+              <option value="45000-50000">45,000-50,000</option>
+              <option value="50000-60000">50,000-60,000</option>
+              <option value="60000+">60,000以上</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

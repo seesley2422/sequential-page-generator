@@ -2,7 +2,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
-import { Download, Eye, Edit, Send } from 'lucide-react';
+import { Download, Eye } from 'lucide-react';
 
 const ResumeArea = () => {
   const currentDate = new Date();
@@ -24,7 +24,7 @@ const ResumeArea = () => {
           <div className="bg-white rounded-md shadow-sm p-8 mb-6">
             <h1 className="text-2xl text-fubon-blue font-medium mb-6">個人履歷</h1>
             
-            <div className="border border-gray-200 rounded-md p-6 mb-6">
+            <div className="border border-gray-200 rounded-md p-6">
               <div className="flex items-start justify-between">
                 <div className="flex items-center">
                   <span className="material-icons text-gray-500 mr-2">description</span>
@@ -260,10 +260,9 @@ const ResumeArea = () => {
               <div className="border border-gray-200 rounded-md p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="font-medium text-fubon-blue">【通路服務】AO通路經營人員</h3>
-                    <div className="text-sm text-gray-500 mt-1 flex items-center">
-                      <span className="material-icons text-gray-400 text-sm mr-1">schedule</span>
-                      更新時間：{formattedDate}
+                    <h3 className="font-medium text-fubon-blue">財管商品協銷人員 FA</h3>
+                    <div className="mt-1">
+                      <span className="text-xs text-white bg-fubon-orange px-2 py-0.5 rounded">徵選階段</span>
                     </div>
                     <div className="text-sm text-gray-500 mt-1 flex items-center">
                       <span className="material-icons text-gray-400 text-sm mr-1">check_circle</span>
@@ -280,12 +279,9 @@ const ResumeArea = () => {
                       <Eye size={18} />
                     </button>
                   </div>
-                  <div className="flex space-x-2">
-                    <button className="py-1 px-3 border border-fubon-blue text-fubon-blue rounded hover:bg-fubon-lightBlue transition-colors text-sm">
-                      編輯
-                    </button>
-                    <button className="py-1 px-3 bg-fubon-blue text-white rounded hover:bg-fubon-darkBlue transition-colors text-sm">
-                      送出
+                  <div>
+                    <button className="py-1 px-3 bg-fubon-teal text-white rounded text-sm">
+                      取消應徵
                     </button>
                   </div>
                 </div>
