@@ -15,7 +15,6 @@ interface FormState {
     identityType: string;
     identityNumber: string;
     salaryExpectation: string;
-    resumeName: string; // Added new field
   };
   contactInfo: {
     homePhone: string;
@@ -38,6 +37,7 @@ interface FormState {
     agreed: boolean;
     signature: string | null;
   };
+  resumeName: string; // Added field for resume name
 }
 
 // Define the initial state
@@ -54,7 +54,6 @@ const initialState: FormState = {
     identityType: '居留證號',
     identityNumber: 'AC12345678',
     salaryExpectation: '45000-50000',
-    resumeName: '財管商品協銷人員FA_陳大靜', // Added initial value
   },
   contactInfo: {
     homePhone: '',
@@ -77,6 +76,7 @@ const initialState: FormState = {
     agreed: false,
     signature: null,
   },
+  resumeName: '財管商品人員FA_陳大靜', // Default value
 };
 
 // Define action types
@@ -86,7 +86,8 @@ type Action =
   | { type: 'UPDATE_CONTACT_INFO'; payload: Partial<FormState['contactInfo']> }
   | { type: 'UPDATE_BIOGRAPHY'; payload: string }
   | { type: 'UPDATE_UPLOADED_FILES'; payload: Partial<FormState['uploadedFiles']> }
-  | { type: 'UPDATE_DECLARATION'; payload: Partial<FormState['declaration']> };
+  | { type: 'UPDATE_DECLARATION'; payload: Partial<FormState['declaration']> }
+  | { type: 'UPDATE_RESUME_NAME'; payload: string };
 
 // Create the reducer function
 const formReducer = (state: FormState, action: Action): FormState => {
@@ -132,6 +133,11 @@ const formReducer = (state: FormState, action: Action): FormState => {
           ...state.declaration,
           ...action.payload,
         },
+      };
+    case 'UPDATE_RESUME_NAME':
+      return {
+        ...state,
+        resumeName: action.payload,
       };
     default:
       return state;

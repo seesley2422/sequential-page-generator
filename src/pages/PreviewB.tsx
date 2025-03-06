@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { useFormContext } from '@/context/FormContext';
+import { useFormContext } from '@/context/FormContextB';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/hooks/use-toast';
 import {
@@ -14,9 +14,9 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-const Preview = () => {
+const PreviewB = () => {
   const { state, dispatch } = useFormContext();
-  const { basicInfo, contactInfo, biography, declaration } = state;
+  const { basicInfo, contactInfo, biography, declaration, resumeName } = state;
   const navigate = useNavigate();
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
@@ -75,7 +75,7 @@ const Preview = () => {
             </div>
             <div>
               <p className="text-sm text-gray-500">職缺履歷名稱</p>
-              <p>{basicInfo.resumeName}</p>
+              <p>{resumeName}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">期望月薪</p>
@@ -177,4 +177,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewB;

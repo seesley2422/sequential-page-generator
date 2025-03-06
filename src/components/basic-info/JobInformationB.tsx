@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { useFormContext } from '@/context/FormContext';
+import { useFormContext } from '@/context/FormContextB';
 
-const JobInformation = () => {
+const JobInformationB = () => {
   const { state, dispatch } = useFormContext();
   const { basicInfo } = state;
 
@@ -56,22 +56,6 @@ const JobInformation = () => {
         </div>
       </div>
 
-      {/* New Resume Name field */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-        <div>
-          <label htmlFor="resumeName" className="fubon-label">職缺履歷名稱 *</label>
-          <input
-            type="text"
-            id="resumeName"
-            name="resumeName"
-            className="fubon-input"
-            value={basicInfo.resumeName}
-            onChange={handleBasicInfoChange}
-            required
-          />
-        </div>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
         <div>
           <label htmlFor="availableDate" className="fubon-label">錄取後可報到日 *</label>
@@ -118,4 +102,4 @@ const JobInformation = () => {
   );
 };
 
-export default JobInformation;
+export default JobInformationB;

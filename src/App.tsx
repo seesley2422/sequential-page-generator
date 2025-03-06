@@ -1,36 +1,50 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { FormProvider } from "./context/FormContext";
-import Index from "./pages/Index";
-import ApplicationForm from "./pages/ApplicationForm";
-import Complete from "./pages/Complete";
-import NotFound from "./pages/NotFound";
-import ResumeArea from "./pages/ResumeArea";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from '@/components/ui/toaster';
+import Index from './pages/Index';
+import NotFound from './pages/NotFound';
+import ResumeArea from './pages/ResumeArea';
+import { FormProvider } from './context/FormContext';
+import ApplicationForm from './pages/ApplicationForm';
+import Complete from './pages/Complete';
+import { FormProvider as FormProviderB } from './context/FormContextB';
+import ApplicationFormB from './pages/ApplicationFormB';
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+function App() {
+  return (
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/resume-area" element={<ResumeArea />} />
+          
+          {/* Version A routes */}
+          <Route 
+            path="/apply" 
+            element={
+              <FormProvider>
+                <ApplicationForm />
+              </FormProvider>
+            } 
+          />
+          
+          {/* Version B routes */}
+          <Route 
+            path="/apply-b" 
+            element={
+              <FormProviderB>
+                <ApplicationFormB />
+              </FormProviderB>
+            } 
+          />
+          
+          <Route path="/complete" element={<Complete />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
       <Toaster />
-      <Sonner />
-      <FormProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/apply" element={<ApplicationForm />} />
-            <Route path="/complete" element={<Complete />} />
-            <Route path="/resume-area" element={<ResumeArea />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </FormProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+    </>
+  );
+}
 
 export default App;
