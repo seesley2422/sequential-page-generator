@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { useFormContext } from '@/context/FormContext';
 import SignatureModal from '@/components/SignatureModal';
+import { Check } from 'lucide-react';
 
 const Declaration = () => {
   const { state, dispatch } = useFormContext();

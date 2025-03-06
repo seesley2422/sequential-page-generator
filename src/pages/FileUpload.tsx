@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { useFormContext } from '@/context/FormContext';
-import { Upload } from 'lucide-react';
+import { Upload, Check } from 'lucide-react';
 
 const FileUpload = () => {
   const { state, dispatch } = useFormContext();

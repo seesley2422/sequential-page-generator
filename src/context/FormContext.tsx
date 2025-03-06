@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useReducer } from 'react';
 
 // Define the form state

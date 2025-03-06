@@ -10,13 +10,15 @@ import Education from './Education';
 import Biography from './Biography';
 import FileUpload from './FileUpload';
 import Declaration from './Declaration';
+import Preview from './Preview';
 
 const steps = [
   '基本資料',
   '學經歷/證照',
   '自傳',
   '上傳檔案',
-  '重要聲明'
+  '重要聲明',
+  '預覽'
 ];
 
 const ApplicationForm = () => {
@@ -36,6 +38,8 @@ const ApplicationForm = () => {
         return <FileUpload />;
       case 5:
         return <Declaration />;
+      case 6:
+        return <Preview />;
       default:
         return <BasicInfo />;
     }
@@ -90,7 +94,7 @@ const ApplicationForm = () => {
                   onClick={handleNext}
                   className="fubon-btn-primary"
                 >
-                  下一步
+                  {currentStep === 5 ? '預覽' : '下一步'}
                 </button>
               )}
               
@@ -99,7 +103,7 @@ const ApplicationForm = () => {
                   onClick={() => navigate('/complete')}
                   className="fubon-btn-primary"
                 >
-                  完成
+                  送出
                 </button>
               )}
             </div>
