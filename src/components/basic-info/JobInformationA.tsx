@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { useFormContext } from '@/context/FormContextB';
+import { useFormContext } from '@/context/FormContext';
 
-const JobInformationB = () => {
+const JobInformationA = () => {
   const { state, dispatch } = useFormContext();
   const { basicInfo } = state;
 
@@ -26,6 +26,19 @@ const JobInformationB = () => {
             className="fubon-input bg-gray-100"
             value="財管商品協銷人員"
             readOnly
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="resumeName" className="fubon-label">職缺履歷名稱 *</label>
+          <input
+            type="text"
+            id="resumeName"
+            name="resumeName"
+            className="fubon-input"
+            value={basicInfo.resumeName}
+            onChange={handleBasicInfoChange}
+            required
           />
         </div>
       </div>
@@ -65,4 +78,4 @@ const JobInformationB = () => {
   );
 };
 
-export default JobInformationB;
+export default JobInformationA;

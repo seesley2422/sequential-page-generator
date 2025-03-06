@@ -1,6 +1,6 @@
 
 import React from 'react';
-import JobInformation from '@/components/basic-info/JobInformationB';
+import JobInformationB from '@/components/basic-info/JobInformationB';
 import PersonalInformation from '@/components/basic-info/PersonalInformation';
 import ContactInformation from '@/components/basic-info/ContactInformation';
 import { useFormContext } from '@/context/FormContextB';
@@ -15,7 +15,7 @@ const BasicInfoB = () => {
   
   return (
     <div className="animate-fade-in">
-      <JobInformation />
+      <JobInformationB />
       <PersonalInformation />
       <ContactInformation />
     </div>
