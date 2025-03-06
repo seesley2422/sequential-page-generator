@@ -1,10 +1,9 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import JobInformationA from '@/components/basic-info/JobInformationA';
 import PersonalInformation from '@/components/basic-info/PersonalInformation';
 import ContactInformation from '@/components/basic-info/ContactInformation';
 import { useFormContext } from '@/context/FormContext';
-import { useEffect } from 'react';
 
 const BasicInfo = () => {
   const { dispatch } = useFormContext();
