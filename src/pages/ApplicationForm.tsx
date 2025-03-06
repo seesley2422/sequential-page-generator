@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
 import StepIndicator from '@/components/StepIndicator';
@@ -23,8 +22,12 @@ const steps = [
 
 const ApplicationForm = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { state, dispatch } = useFormContext();
   const { currentStep } = state;
+
+  // If on the complete page, keep currentStep as is
+  const isCompletePage = location.pathname === '/complete';
 
   const renderStepContent = () => {
     switch (currentStep) {
