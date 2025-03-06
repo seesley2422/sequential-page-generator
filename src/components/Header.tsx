@@ -31,8 +31,11 @@ const Header = () => {
               職缺搜尋
             </Link>
             <Link 
-              to="/about" 
-              className="text-base text-gray-600 hover:text-fubon-blue transition-colors duration-200"
+              to="/resume-area" 
+              className={cn(
+                "text-base transition-colors duration-200", 
+                location.pathname === "/resume-area" ? "text-fubon-blue font-medium" : "text-gray-600 hover:text-fubon-blue"
+              )}
             >
               履歷專區
             </Link>

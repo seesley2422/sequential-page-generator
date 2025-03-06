@@ -1,12 +1,24 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from '@/context/FormContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from '@/hooks/use-toast';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const Preview = () => {
   const { state, dispatch } = useFormContext();
   const { basicInfo, contactInfo, biography, declaration } = state;
   const navigate = useNavigate();
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
   useEffect(() => {
     // Ensure current step is set to 6 when this component is mounted
@@ -19,8 +31,19 @@ const Preview = () => {
   };
 
   const handleSubmit = () => {
-    // Navigate to the complete page
-    navigate('/complete');
+    // Open confirmation dialog
+    setIsConfirmDialogOpen(true);
+  };
+
+  const handleConfirmSubmit = () => {
+    // Show success toast
+    toast({
+      title: "申請成功！",
+      description: "您的履歷已成功送出",
+    });
+    
+    // Navigate to the resume area page
+    navigate('/resume-area');
   };
 
   return (
@@ -111,6 +134,23 @@ const Preview = () => {
       <div className="mt-8 p-4 bg-gray-50 rounded">
         <p className="text-sm">請確認上述資料無誤後，點擊「送出」按鈕完成申請。</p>
       </div>
+
+      <AlertDialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>確認送出申請</AlertDialogTitle>
+            <AlertDialogDescription>
+              您確定要送出此份履歷申請嗎？送出後將無法修改。
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>取消</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmSubmit} className="bg-fubon-blue hover:bg-fubon-darkBlue">
+              確認送出
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

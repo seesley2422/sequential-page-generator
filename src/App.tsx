@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import ApplicationForm from "./pages/ApplicationForm";
 import Complete from "./pages/Complete";
 import NotFound from "./pages/NotFound";
+import ResumeArea from "./pages/ResumeArea";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/apply" element={<ApplicationForm />} />
             <Route path="/complete" element={<Complete />} />
+            <Route path="/resume-area" element={<ResumeArea />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
