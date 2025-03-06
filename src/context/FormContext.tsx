@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useReducer } from 'react';
 
 // Define the form state
@@ -16,6 +15,7 @@ interface FormState {
     identityNumber: string;
     salaryExpectation: string;
     resumeName: string; // Added new field
+    availableDate: string;  // Added this field
   };
   contactInfo: {
     homePhone: string;
@@ -55,6 +55,7 @@ const initialState: FormState = {
     identityNumber: 'AC12345678',
     salaryExpectation: '45000-50000',
     resumeName: '財管商品協銷人員FA_陳大靜', // Added initial value
+    availableDate: '',  // Added this field
   },
   contactInfo: {
     homePhone: '',
