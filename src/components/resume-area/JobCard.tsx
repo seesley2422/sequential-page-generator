@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Download, Eye } from 'lucide-react';
+import { Download, Eye, Clock, CheckCircle, FileText } from 'lucide-react';
 
 interface JobCardProps {
   title: string;
@@ -23,13 +23,13 @@ const JobCard = ({ title, completionPercentage, formattedDate, isInReviewStage }
             </div>
           )}
           <div className="text-sm text-gray-500 mt-1 flex items-center">
-            <span className="material-icons text-gray-400 text-sm mr-1">schedule</span>
+            <Clock className="text-gray-400 mr-1" size={16} />
             更新時間：{formattedDate}
           </div>
           <div className="text-sm text-gray-500 mt-1 flex items-center">
-            <span className="material-icons text-gray-400 text-sm mr-1">check_circle</span>
+            <CheckCircle className="text-gray-400 mr-1" size={16} />
             完成度：
-            <span className={`${isComplete ? 'text-green-500' : 'text-yellow-500'}`}>
+            <span className={`${isComplete ? 'text-green-500' : 'text-yellow-500'} ml-1`}>
               {completionPercentage}%
             </span>
           </div>

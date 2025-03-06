@@ -41,7 +41,7 @@ const ResumeArea = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       <Header />
       
       <Breadcrumb 
@@ -51,8 +51,8 @@ const ResumeArea = () => {
         ]} 
       />
       
-      <main className="flex-1 animate-fade-in-up">
-        <div className="container mx-auto py-8 px-4">
+      <main className="flex-1 pb-8">
+        <div className="container mx-auto py-6 px-4">
           <PersonalResumeSection formattedDate={formattedDate} />
 
           <CompanyJobSection 
