@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 const BasicInfoB = () => {
   const { dispatch } = useFormContext();
   
-  // Ensure current step is set to 1 when this component is mounted
   useEffect(() => {
     dispatch({ type: 'SET_CURRENT_STEP', payload: 1 });
   }, [dispatch]);
