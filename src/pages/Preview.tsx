@@ -1,13 +1,45 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormContext } from '@/context/FormContext';
+import { useNavigate } from 'react-router-dom';
 
 const Preview = () => {
-  const { state } = useFormContext();
+  const { state, dispatch } = useFormContext();
   const { basicInfo, contactInfo, biography, declaration } = state;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Ensure current step is set to 6 when this component is mounted
+    dispatch({ type: 'SET_CURRENT_STEP', payload: 6 });
+  }, [dispatch]);
+
+  const handleEdit = () => {
+    // Return to Step 1 (Basic Info)
+    dispatch({ type: 'SET_CURRENT_STEP', payload: 1 });
+  };
+
+  const handleSubmit = () => {
+    // Navigate to the complete page
+    navigate('/complete');
+  };
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in relative">
+      <div className="flex justify-end mb-4 space-x-2">
+        <button 
+          onClick={handleEdit}
+          className="fubon-btn-secondary"
+        >
+          編輯
+        </button>
+        <button 
+          onClick={handleSubmit}
+          className="fubon-btn-primary"
+        >
+          送出
+        </button>
+      </div>
+      
       <h2 className="text-xl text-fubon-blue font-medium mb-4">預覽申請資料</h2>
       
       <div className="space-y-8">

@@ -18,13 +18,19 @@ const SignatureSection: React.FC<SignatureSectionProps> = ({ signature, onOpenSi
         </p>
       </div>
       
-      <div className="flex justify-center mt-4">
+      <div className="flex flex-col items-center mt-4">
         <button 
           onClick={onOpenSignatureModal}
-          className="border border-gray-300 rounded bg-gray-100 py-2 px-4 text-sm flex items-center space-x-2"
+          className="border border-gray-300 rounded bg-gray-100 py-2 px-4 text-sm flex items-center space-x-2 hover:bg-gray-200 transition-colors"
         >
-          <span>電子簽章確認</span>
+          <span>電子簽章確認 {!signature && <span className="text-red-500">*</span>}</span>
         </button>
+        
+        {!signature && (
+          <p className="text-sm text-red-500 mt-2">
+            請完成電子簽名，才能進行預覽
+          </p>
+        )}
       </div>
       
       {signature && (

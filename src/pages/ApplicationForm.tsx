@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -49,6 +49,11 @@ const ApplicationForm = () => {
   };
 
   const handleNext = () => {
+    // If we're on the declaration step, check if signature exists
+    if (currentStep === 5 && !state.declaration.signature) {
+      return; // Don't proceed if no signature
+    }
+    
     if (currentStep < steps.length) {
       dispatch({ type: 'SET_CURRENT_STEP', payload: currentStep + 1 });
     }
@@ -82,34 +87,26 @@ const ApplicationForm = () => {
               {renderStepContent()}
             </div>
             
-            <div className="flex justify-end mt-8 space-x-2">
-              {currentStep > 1 && (
-                <button 
-                  onClick={handlePrevious}
-                  className="fubon-btn-secondary"
-                >
-                  上一步
-                </button>
-              )}
-              
-              {currentStep < steps.length && (
+            {/* Only show navigation buttons on steps 1-4 */}
+            {currentStep < 5 && (
+              <div className="flex justify-end mt-8 space-x-2">
+                {currentStep > 1 && (
+                  <button 
+                    onClick={handlePrevious}
+                    className="fubon-btn-secondary"
+                  >
+                    上一步
+                  </button>
+                )}
+                
                 <button 
                   onClick={handleNext}
                   className="fubon-btn-primary"
                 >
-                  {currentStep === 5 ? '預覽' : '下一步'}
+                  下一步
                 </button>
-              )}
-              
-              {currentStep === steps.length && (
-                <button 
-                  onClick={() => navigate('/complete')}
-                  className="fubon-btn-primary"
-                >
-                  送出
-                </button>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </main>
