@@ -16,7 +16,7 @@ import {
 
 const PreviewB = () => {
   const { state, dispatch } = useFormContext();
-  const { basicInfo, contactInfo, biography, declaration, resumeName } = state;
+  const { basicInfo, contactInfo, biography, declaration } = state;
   const navigate = useNavigate();
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
@@ -72,10 +72,6 @@ const PreviewB = () => {
             <div>
               <p className="text-sm text-gray-500">應徵職缺</p>
               <p>財管商品協銷人員</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">職缺履歷名稱</p>
-              <p>{resumeName}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">期望月薪</p>

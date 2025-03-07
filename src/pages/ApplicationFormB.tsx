@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
 import StepIndicator from '@/components/StepIndicator';
-import { FormProvider, useFormContext } from '@/context/FormContextB';
+import { useFormContext } from '@/context/FormContextB';
 import BasicInfo from './BasicInfoB';
 import Education from './EducationB';
 import Biography from './BiographyB';
@@ -21,7 +21,6 @@ const steps = [
 ];
 
 const ApplicationFormB = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const { state, dispatch } = useFormContext();
   const { currentStep } = state;
