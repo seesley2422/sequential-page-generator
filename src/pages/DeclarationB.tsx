@@ -20,10 +20,50 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+const ResumeNameDialog = ({ isOpen, onClose, onConfirm, resumeName, setResumeName }: {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  resumeName: string;
+  setResumeName: (name: string) => void;
+}) => {
+  return (
+    <AlertDialog open={isOpen} onOpenChange={onClose}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle className="text-fubon-blue text-xl">確認職缺履歷名稱</AlertDialogTitle>
+        </AlertDialogHeader>
+        
+        <div className="py-4">
+          <h3 className="text-lg mb-2">履歷名稱</h3>
+          <input
+            type="text"
+            value={resumeName}
+            onChange={(e) => setResumeName(e.target.value)}
+            className="w-full border rounded p-2 mb-4"
+          />
+        </div>
+        
+        <AlertDialogFooter>
+          <AlertDialogCancel className="border border-gray-300">取消</AlertDialogCancel>
+          <AlertDialogAction 
+            onClick={onConfirm} 
+            className="bg-fubon-blue hover:bg-fubon-darkBlue text-white"
+          >
+            確認
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+};
+
 const DeclarationB = () => {
   const { state, dispatch } = useFormContext();
   const [isSignatureModalOpen, setIsSignatureModalOpen] = useState(false);
   const [isSignatureValid, setIsSignatureValid] = useState(!!state.declaration.signature);
+  const [isResumeNameDialogOpen, setIsResumeNameDialogOpen] = useState(false);
+  const [resumeName, setResumeName] = useState(state.resumeName);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,10 +96,20 @@ const DeclarationB = () => {
 
   const handleNextStep = () => {
     if (isSignatureValid) {
-      // Move to preview
-      dispatch({ type: 'SET_CURRENT_STEP', payload: 6 });
-      navigate('/apply-b/preview');
+      setIsResumeNameDialogOpen(true);
     }
+  };
+  
+  const handleConfirmResumeName = () => {
+    // Update the resume name in the context
+    dispatch({
+      type: 'UPDATE_RESUME_NAME',
+      payload: resumeName
+    });
+    
+    // Close the dialog and move to preview
+    setIsResumeNameDialogOpen(false);
+    dispatch({ type: 'SET_CURRENT_STEP', payload: 6 });
   };
 
   return (
@@ -111,6 +161,14 @@ const DeclarationB = () => {
         isOpen={isSignatureModalOpen}
         onClose={() => setIsSignatureModalOpen(false)}
         onSave={handleSaveSignature}
+      />
+      
+      <ResumeNameDialog
+        isOpen={isResumeNameDialogOpen}
+        onClose={() => setIsResumeNameDialogOpen(false)}
+        onConfirm={handleConfirmResumeName}
+        resumeName={resumeName}
+        setResumeName={setResumeName}
       />
     </div>
   );

@@ -16,7 +16,7 @@ import {
 
 const PreviewB = () => {
   const { state, dispatch } = useFormContext();
-  const { basicInfo, contactInfo, biography, declaration } = state;
+  const { basicInfo, contactInfo, biography, declaration, resumeName } = state;
   const navigate = useNavigate();
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
@@ -74,12 +74,16 @@ const PreviewB = () => {
               <p>財管商品協銷人員</p>
             </div>
             <div>
+              <p className="text-sm text-gray-500">職缺履歷名稱</p>
+              <p>{resumeName}</p>
+            </div>
+            <div>
               <p className="text-sm text-gray-500">期望月薪</p>
               <p>{basicInfo.salaryExpectation}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">錄取後可報到日</p>
-              <p>{basicInfo.availableDate || '2023-10-01'}</p>
+              <p>2023-10-01</p>
             </div>
           </div>
         </div>
