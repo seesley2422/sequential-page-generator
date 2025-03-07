@@ -25,7 +25,7 @@ const DeclarationB = () => {
   const [isSignatureModalOpen, setIsSignatureModalOpen] = useState(false);
   const [isSignatureValid, setIsSignatureValid] = useState(!!state.declaration.signature);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
-  const [resumeName, setResumeName] = useState(state.resumeName || '');
+  const [resumeName, setResumeName] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +40,10 @@ const DeclarationB = () => {
       setResumeName(state.resumeName);
     } else if (state.basicInfo.chineseName) {
       // Default resume name: job title + name
-      setResumeName(`財管商品人員FA_${state.basicInfo.chineseName}`);
+      setResumeName(`財管商品協銷人員FA_${state.basicInfo.chineseName}`);
+    } else {
+      // Hardcoded default name if no user name available
+      setResumeName('財管商品協銷人員FA_陳大靜');
     }
   }, [dispatch, state.declaration.signature, state.resumeName, state.basicInfo.chineseName]);
 
