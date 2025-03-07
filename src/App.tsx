@@ -7,7 +7,7 @@ import ResumeArea from './pages/ResumeArea';
 import { FormProvider } from './context/FormContext';
 import ApplicationForm from './pages/ApplicationForm';
 import Complete from './pages/Complete';
-import { FormProvider as FormProviderB } from './context/FormContextB';
+import { FormProvider as FormProviderB } from './context/form-b/FormContextB';
 import ApplicationFormB from './pages/ApplicationFormB';
 
 function App() {
