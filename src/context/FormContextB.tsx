@@ -60,6 +60,7 @@ export interface FormState {
   declaration: {
     signature: string;
   };
+  resumeName: string;
 }
 
 // Define action types
@@ -69,7 +70,8 @@ type FormAction =
   | { type: 'UPDATE_CONTACT_INFO'; payload: Partial<FormState['contactInfo']> }
   | { type: 'UPDATE_BIOGRAPHY'; payload: string }
   | { type: 'UPDATE_UPLOADED_FILES'; payload: Partial<FormState['uploadedFiles']> }
-  | { type: 'UPDATE_DECLARATION'; payload: Partial<FormState['declaration']> };
+  | { type: 'UPDATE_DECLARATION'; payload: Partial<FormState['declaration']> }
+  | { type: 'UPDATE_RESUME_NAME'; payload: string };
 
 // Create context with initial state
 const initialState: FormState = {
@@ -110,6 +112,7 @@ const initialState: FormState = {
   declaration: {
     signature: '',
   },
+  resumeName: '',
 };
 
 // Create context
@@ -165,6 +168,11 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
           ...state.declaration,
           ...action.payload,
         },
+      };
+    case 'UPDATE_RESUME_NAME':
+      return {
+        ...state,
+        resumeName: action.payload,
       };
     default:
       return state;

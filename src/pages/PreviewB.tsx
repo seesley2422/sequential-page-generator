@@ -16,7 +16,7 @@ import {
 
 const PreviewB = () => {
   const { state, dispatch } = useFormContext();
-  const { basicInfo, contactInfo, biography, declaration } = state;
+  const { basicInfo, contactInfo, biography, declaration, resumeName } = state;
   const navigate = useNavigate();
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
@@ -36,6 +36,9 @@ const PreviewB = () => {
   };
 
   const handleConfirmSubmit = () => {
+    // Close the dialog
+    setIsConfirmDialogOpen(false);
+    
     // Show success toast
     toast({
       title: "申請成功！",
@@ -72,6 +75,10 @@ const PreviewB = () => {
             <div>
               <p className="text-sm text-gray-500">應徵職缺</p>
               <p>財管商品協銷人員</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">履歷名稱</p>
+              <p>{resumeName || '財管商品人員FA'}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">期望月薪</p>
@@ -163,7 +170,7 @@ const PreviewB = () => {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>取消</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmSubmit} className="bg-fubon-blue hover:bg-fubon-darkBlue">
+            <AlertDialogAction onClick={handleConfirmSubmit} className="bg-fubon-blue hover:bg-fubon-blue/90">
               確認送出
             </AlertDialogAction>
           </AlertDialogFooter>
