@@ -39,8 +39,42 @@ export const initialState: FormState = {
     addressDetail: '中山北路一段82號7樓',
   },
   education: {
-    highestDegree: '',
-    universities: [],
+    highestDegree: '其他',
+    universities: [
+      {
+        id: uuidv4(),
+        name: '台灣大學',
+        department: '資訊工程學系',
+        degree: '碩士',
+        country: '台灣',
+        graduationStatus: '畢業',
+        startDate: '2024-07',
+        endDate: '2025-03',
+        otherDegree: '在職進修'
+      },
+      {
+        id: uuidv4(),
+        name: '台灣大學',
+        department: '資訊工程學系',
+        degree: '碩士',
+        country: '台灣',
+        graduationStatus: '畢業',
+        startDate: '2024-07',
+        endDate: '2025-03',
+        otherDegree: ''
+      },
+      {
+        id: uuidv4(),
+        name: '台灣大學',
+        department: '資訊工程學系',
+        degree: '其他',
+        country: '台灣',
+        graduationStatus: '',
+        startDate: '2024-07',
+        endDate: '2025-03',
+        otherDegree: '在職進修'
+      }
+    ],
   },
   workExperience: {
     hasExperience: false,

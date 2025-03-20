@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -5,6 +6,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import StepIndicator from '@/components/StepIndicator';
 import { useFormContext } from '@/context/FormContextC';
 import BasicInfoC from './BasicInfoC';
+import EducationC from './EducationC';
 import { Button } from '@/components/ui/button';
 
 const steps = [
@@ -29,8 +31,7 @@ const ApplicationFormC = () => {
       case 1:
         return <BasicInfoC />;
       case 2:
-        // We would implement this in future iterations
-        return <div>學經歷/證照 - 待實作</div>;
+        return <EducationC />;
       case 3:
         return <div>自傳 - 待實作</div>;
       case 4:
