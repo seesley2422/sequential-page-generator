@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useFormContext } from '@/context/FormContextC';
+import { Input } from '@/components/ui/input';
 import MonthYearPicker from '@/components/basic-info/MonthYearPicker';
 import { 
   Select, 
@@ -9,19 +10,17 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
 
 const HighestEducation = () => {
   const { state, dispatch } = useFormContext();
   const { education } = state;
 
-  const handleEducationChange = (key: string, value: string) => {
+  const handleEducationChange = (field: string, value: string) => {
     dispatch({
       type: 'UPDATE_EDUCATION',
       payload: { 
         ...education,
-        [key]: value 
+        [field]: value 
       }
     });
   };
@@ -46,12 +45,12 @@ const HighestEducation = () => {
         最高學歷
       </h2>
       
-      <div className="space-y-4">
+      <div className="space-y-4 mt-4">
         <div className="space-y-2">
           <label htmlFor="highestDegree" className="block text-sm font-medium">
             教育程度 <span className="text-red-500">*</span>
           </label>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <Select
               value={education.highestDegree}
               onValueChange={(value) => handleEducationChange('highestDegree', value)}
@@ -72,14 +71,15 @@ const HighestEducation = () => {
             
             {education.highestDegree === '其他' && (
               <Input
-                placeholder="請填寫教育程度"
+                type="text"
+                placeholder="請輸入教育程度"
                 value={education.universities[0]?.otherDegree || ''}
                 onChange={(e) => 
                   education.universities[0] && 
                   handleUniversityChange(education.universities[0].id, 'otherDegree', e.target.value)
                 }
-                className="flex-1"
                 required
+                className="w-full sm:w-1/2"
               />
             )}
           </div>
@@ -184,10 +184,6 @@ const HighestEducationDetails = () => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-transparent md:invisible">
-        最高學歷
-      </h2>
-      
       <div className="space-y-2">
         <label htmlFor="status" className="block text-sm font-medium">
           狀態 <span className="text-red-500">*</span>

@@ -9,6 +9,7 @@ import WorkExperience from './sections/WorkExperience';
 import SalaryExpectation from './sections/SalaryExpectation';
 import LanguageAbilities from './sections/LanguageAbilities';
 import OtherSkills from './sections/OtherSkills';
+import { Separator } from '@/components/ui/separator';
 
 const EducationFormC = () => {
   const { state } = useFormContext();
@@ -16,35 +17,50 @@ const EducationFormC = () => {
   return (
     <div className="mt-8 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Left Column */}
+        {/* Left Column - Odd-numbered groups */}
         <div className="space-y-6">
-          {/* Highest Degree Section */}
+          {/* Group 01: Highest Degree Section Header */}
           <HighestEducation />
 
-          <hr className="my-6" />
+          {/* Separator between sections */}
+          <Separator className="my-6" />
 
-          {/* Second Highest Degree Section */}
+          {/* Group 11: Second Highest Degree Section Header */}
           <SecondHighestEducation />
+          
+          {/* Separator between sections */}
+          <Separator className="my-6" />
+          
+          {/* Group 19: Other Education Section Header */}
+          <OtherEducation />
         </div>
 
-        {/* Right Column */}
+        {/* Right Column - Even-numbered groups */}
         <div className="space-y-6">
-          {/* Highest Degree (cont'd) and Second Highest Degree (cont'd) */}
+          {/* Group 02, 04, 06, 08, 10: Details for Highest Degree */}
           <div className="md:pt-10">
             <HighestEducation.Details />
           </div>
 
-          <hr className="my-6" />
+          {/* Separator between sections */}
+          <Separator className="my-6" />
 
+          {/* Group 12, 14, 16, 18: Details for Second Highest Degree */}
           <div className="md:pt-10">
             <SecondHighestEducation.Details />
+          </div>
+          
+          {/* Separator between sections */}
+          <Separator className="my-6" />
+          
+          {/* Group 20, 22, 24, 26: Details for Other Education */}
+          <div className="md:pt-10">
+            <OtherEducation.Details />
           </div>
         </div>
       </div>
 
-      {/* Other Education Section (Full Width) */}
-      <OtherEducation />
-
+      {/* Following sections will be implemented in the next phase */}
       {/* Professional Certificates */}
       <ProfessionalCertificates />
 
