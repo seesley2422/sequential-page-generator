@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormContext } from '@/context/FormContextC';
 import MonthYearPicker from '../basic-info/MonthYearPicker';
 import { 
@@ -10,6 +10,12 @@ import {
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { PlusCircle, Trash2 } from 'lucide-react';
+import TextareaCustom from '../ui/textarea-custom';
+import { v4 as uuidv4 } from 'uuid';
 
 const EducationFormC = () => {
   const { state, dispatch } = useFormContext();
@@ -280,28 +286,6 @@ const EducationFormC = () => {
 
           {/* Second Highest Degree (cont'd) */}
           <div className="space-y-4 md:pt-10">
-            <div className="space-y-2">
-              <label htmlFor="department2" className="block text-sm font-medium">
-                科系 <span className="text-red-500">*</span>
-              </label>
-              <Select
-                value={education.universities[1]?.department || ''}
-                onValueChange={(value) => 
-                  education.universities[1] && 
-                  handleUniversityChange(education.universities[1].id, 'department', value)
-                }
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="請選擇" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="資訊工程學系">資訊工程學系</SelectItem>
-                  <SelectItem value="企業管理學系">企業管理學系</SelectItem>
-                  <SelectItem value="外語學系">外語學系</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
             <div className="space-y-2">
               <label htmlFor="status2" className="block text-sm font-medium">
                 狀態 <span className="text-red-500">*</span>
