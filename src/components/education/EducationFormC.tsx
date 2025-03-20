@@ -10,74 +10,46 @@ import WorkExperience from './sections/WorkExperience';
 import SalaryExpectation from './sections/SalaryExpectation';
 import LanguageAbilities from './sections/LanguageAbilities';
 import OtherSkills from './sections/OtherSkills';
-import { Separator } from '@/components/ui/separator';
 
 const EducationFormC = () => {
-  const { state } = useFormContext();
-  
   return (
-    <div className="mt-8 animate-fade-in">
+    <div className="animate-fade-in">
+      <h2 className="text-xl font-semibold mb-6">學經歷／證照</h2>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Left Column - Odd-numbered groups */}
-        <div className="space-y-6">
-          {/* Group 01: Highest Degree Section Header */}
+        {/* Left Column - Odd numbered groups */}
+        <div className="space-y-8">
+          {/* Group 01-09: Highest Education */}
           <HighestEducation />
-
-          {/* Separator between sections */}
-          <Separator className="my-6" />
-
-          {/* Group 11: Second Highest Degree Section Header */}
+          
+          {/* Group 19-27: Other Education */}
+          <OtherEducation />
+          
+          {/* Group 33-36: Certifications */}
+          <Certifications />
+          
+          {/* Group 45: Salary Expectation */}
+          <SalaryExpectation />
+        </div>
+        
+        {/* Right Column - Even numbered groups */}
+        <div className="space-y-8">
+          {/* Group 11-17: Second Highest Education */}
           <SecondHighestEducation />
           
-          {/* Separator between sections */}
-          <Separator className="my-6" />
+          {/* Group 29-32: Professional Certificates */}
+          <ProfessionalCertificates />
           
-          {/* Group 19: Other Education Section Header */}
-          <OtherEducation />
-        </div>
-
-        {/* Right Column - Even-numbered groups */}
-        <div className="space-y-6">
-          {/* Group 02, 04, 06, 08, 10: Details for Highest Degree */}
-          <div className="md:pt-10">
-            <HighestEducation.Details />
-          </div>
-
-          {/* Separator between sections */}
-          <Separator className="my-6" />
-
-          {/* Group 12, 14, 16, 18: Details for Second Highest Degree */}
-          <div className="md:pt-10">
-            <SecondHighestEducation.Details />
-          </div>
+          {/* Group 37-44: Work Experience */}
+          <WorkExperience />
           
-          {/* Separator between sections */}
-          <Separator className="my-6" />
+          {/* Group 47-53: Language Abilities */}
+          <LanguageAbilities />
           
-          {/* Group 20, 22, 24, 26: Details for Other Education */}
-          <div className="md:pt-10">
-            <OtherEducation.Details />
-          </div>
+          {/* Group 55: Other Skills */}
+          <OtherSkills />
         </div>
       </div>
-
-      {/* Group 29-32: Professional Certificates */}
-      <ProfessionalCertificates />
-
-      {/* Group 33-36: Certifications */}
-      <Certifications />
-
-      {/* Group 37-44: Work Experience */}
-      <WorkExperience />
-
-      {/* Group 45: Salary Expectation */}
-      <SalaryExpectation />
-
-      {/* Language Abilities */}
-      <LanguageAbilities />
-
-      {/* Other Skills */}
-      <OtherSkills />
     </div>
   );
 };

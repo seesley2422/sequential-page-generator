@@ -8,6 +8,9 @@ import { useFormContext } from '@/context/FormContextC';
 import BasicInfoC from './BasicInfoC';
 import EducationC from './EducationC';
 import AutobiographyC from './AutobiographyC';
+import FileUploadC from './FileUploadC';
+import DeclarationC from './DeclarationC';
+import PreviewC from './PreviewC';
 import { Button } from '@/components/ui/button';
 
 const steps = [
@@ -36,11 +39,11 @@ const ApplicationFormC = () => {
       case 3:
         return <AutobiographyC />;
       case 4:
-        return <div>上傳檔案 - 待實作</div>;
+        return <FileUploadC />;
       case 5:
-        return <div>重要聲明 - 待實作</div>;
+        return <DeclarationC />;
       case 6:
-        return <div>預覽 - 待實作</div>;
+        return <PreviewC />;
       default:
         return <BasicInfoC />;
     }
@@ -80,25 +83,27 @@ const ApplicationFormC = () => {
               {renderStepContent()}
             </div>
             
-            {/* Navigation buttons */}
-            <div className="flex justify-end mt-8 space-x-2">
-              {currentStep > 1 && (
+            {/* Navigation buttons - Only show for steps 1-3 */}
+            {currentStep <= 3 && (
+              <div className="flex justify-end mt-8 space-x-2">
+                {currentStep > 1 && (
+                  <Button 
+                    variant="outline"
+                    onClick={handlePrevious}
+                    className="border-fubon-blue text-fubon-blue hover:bg-fubon-lightBlue"
+                  >
+                    上一步
+                  </Button>
+                )}
+                
                 <Button 
-                  variant="outline"
-                  onClick={handlePrevious}
-                  className="border-fubon-blue text-fubon-blue hover:bg-fubon-lightBlue"
+                  onClick={handleNext}
+                  className="bg-fubon-blue hover:bg-fubon-darkBlue text-white"
                 >
-                  上一步
+                  下一步
                 </Button>
-              )}
-              
-              <Button 
-                onClick={handleNext}
-                className="bg-fubon-blue hover:bg-fubon-darkBlue text-white"
-              >
-                下一步
-              </Button>
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </main>
