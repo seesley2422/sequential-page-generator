@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useFormContext } from '@/context/FormContextC';
 import { Input } from '@/components/ui/input';
@@ -59,7 +58,7 @@ const HighestEducation = () => {
                 <SelectValue placeholder="請選擇" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">請選擇</SelectItem>
+                <SelectItem value="placeholder">請選擇</SelectItem>
                 <SelectItem value="博士">博士</SelectItem>
                 <SelectItem value="碩士">碩士</SelectItem>
                 <SelectItem value="大學">大學</SelectItem>
@@ -100,7 +99,7 @@ const HighestEducation = () => {
               <SelectValue placeholder="請選擇" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">請選擇</SelectItem>
+              <SelectItem value="placeholder">請選擇</SelectItem>
               <SelectItem value="台灣">台灣</SelectItem>
               <SelectItem value="美國">美國</SelectItem>
               <SelectItem value="日本">日本</SelectItem>
@@ -123,7 +122,7 @@ const HighestEducation = () => {
               <SelectValue placeholder="請選擇" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">請選擇</SelectItem>
+              <SelectItem value="placeholder">請選擇</SelectItem>
               <SelectItem value="台灣大學">台灣大學</SelectItem>
               <SelectItem value="國立清華大學">國立清華大學</SelectItem>
               <SelectItem value="國立交通大學">國立交通大學</SelectItem>
@@ -146,7 +145,7 @@ const HighestEducation = () => {
               <SelectValue placeholder="請選擇" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">請選擇</SelectItem>
+              <SelectItem value="placeholder">請選擇</SelectItem>
               <SelectItem value="資訊工程學系">資訊工程學系</SelectItem>
               <SelectItem value="企業管理學系">企業管理學系</SelectItem>
               <SelectItem value="外語學系">外語學系</SelectItem>

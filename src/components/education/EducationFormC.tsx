@@ -12,6 +12,8 @@ import LanguageAbilities from './sections/LanguageAbilities';
 import OtherSkills from './sections/OtherSkills';
 
 const EducationFormC = () => {
+  const { state } = useFormContext();
+  
   return (
     <div className="animate-fade-in">
       <h2 className="text-xl font-semibold mb-6">學經歷／證照</h2>
