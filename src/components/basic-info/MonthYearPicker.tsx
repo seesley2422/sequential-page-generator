@@ -16,6 +16,7 @@ interface MonthYearPickerProps {
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
+  disabled?: boolean;
 }
 
 const MonthYearPicker: React.FC<MonthYearPickerProps> = ({
@@ -23,6 +24,7 @@ const MonthYearPicker: React.FC<MonthYearPickerProps> = ({
   onChange,
   placeholder = '請選擇日期',
   required = false,
+  disabled = false,
 }) => {
   const dateValue = value ? new Date(value) : undefined;
 
@@ -44,6 +46,7 @@ const MonthYearPicker: React.FC<MonthYearPickerProps> = ({
             !value && "text-muted-foreground",
             "border border-gray-300 rounded-md"
           )}
+          disabled={disabled}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
           {value ? format(new Date(value + '-01'), 'yyyy/MM') : <span>{placeholder}</span>}
