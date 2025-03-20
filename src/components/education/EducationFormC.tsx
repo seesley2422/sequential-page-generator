@@ -11,10 +11,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { PlusCircle, Trash2 } from 'lucide-react';
-import TextareaCustom from '../ui/textarea-custom';
+import { PlusCircle } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 
 const EducationFormC = () => {
@@ -42,6 +39,25 @@ const EducationFormC = () => {
         ...education,
         universities: updatedUniversities 
       }
+    });
+  };
+
+  const handleAddUniversity = () => {
+    const newUniversity = {
+      id: uuidv4(),
+      name: '',
+      department: '',
+      degree: '',
+      country: '',
+      graduationStatus: '',
+      startDate: '',
+      endDate: '',
+      otherDegree: ''
+    };
+    
+    dispatch({
+      type: 'ADD_UNIVERSITY',
+      payload: newUniversity
     });
   };
 
@@ -75,6 +91,7 @@ const EducationFormC = () => {
                     <SelectValue placeholder="請選擇" />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="">請選擇</SelectItem>
                     <SelectItem value="博士">博士</SelectItem>
                     <SelectItem value="碩士">碩士</SelectItem>
                     <SelectItem value="大學">大學</SelectItem>
@@ -87,12 +104,13 @@ const EducationFormC = () => {
                 {education.highestDegree === '其他' && (
                   <Input
                     placeholder="請填寫教育程度"
-                    value={education.universities[0]?.department || ''}
+                    value={education.universities[0]?.otherDegree || ''}
                     onChange={(e) => 
                       education.universities[0] && 
-                      handleUniversityChange(education.universities[0].id, 'department', e.target.value)
+                      handleUniversityChange(education.universities[0].id, 'otherDegree', e.target.value)
                     }
                     className="flex-1"
+                    required
                   />
                 )}
               </div>
@@ -113,6 +131,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="台灣">台灣</SelectItem>
                   <SelectItem value="美國">美國</SelectItem>
                   <SelectItem value="日本">日本</SelectItem>
@@ -135,6 +154,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="台灣大學">台灣大學</SelectItem>
                   <SelectItem value="國立清華大學">國立清華大學</SelectItem>
                   <SelectItem value="國立交通大學">國立交通大學</SelectItem>
@@ -157,6 +177,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="資訊工程學系">資訊工程學系</SelectItem>
                   <SelectItem value="企業管理學系">企業管理學系</SelectItem>
                   <SelectItem value="外語學系">外語學系</SelectItem>
@@ -188,6 +209,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="台灣">台灣</SelectItem>
                   <SelectItem value="美國">美國</SelectItem>
                   <SelectItem value="日本">日本</SelectItem>
@@ -210,9 +232,33 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="台灣大學">台灣大學</SelectItem>
                   <SelectItem value="國立清華大學">國立清華大學</SelectItem>
                   <SelectItem value="國立交通大學">國立交通大學</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="department2" className="block text-sm font-medium">
+                科系 <span className="text-red-500">*</span>
+              </label>
+              <Select
+                value={education.universities[1]?.department || ''}
+                onValueChange={(value) => 
+                  education.universities[1] && 
+                  handleUniversityChange(education.universities[1].id, 'department', value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="請選擇" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
+                  <SelectItem value="資訊工程學系">資訊工程學系</SelectItem>
+                  <SelectItem value="企業管理學系">企業管理學系</SelectItem>
+                  <SelectItem value="外語學系">外語學系</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -242,6 +288,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="畢業">畢業</SelectItem>
                   <SelectItem value="肆業">肆業</SelectItem>
                   <SelectItem value="在學">在學</SelectItem>
@@ -301,6 +348,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="畢業">畢業</SelectItem>
                   <SelectItem value="肆業">肆業</SelectItem>
                   <SelectItem value="在學">在學</SelectItem>
@@ -345,9 +393,20 @@ const EducationFormC = () => {
 
       {/* Other Education Section (Full Width) */}
       <div className="mt-8">
-        <h2 className="text-lg font-semibold text-fubon-blue border-l-4 border-fubon-blue pl-2">
-          其他學歷
-        </h2>
+        <div className="flex justify-between items-center">
+          <h2 className="text-lg font-semibold text-fubon-blue border-l-4 border-fubon-blue pl-2">
+            其他學歷
+          </h2>
+          <Button 
+            type="button" 
+            variant="outline" 
+            onClick={handleAddUniversity} 
+            className="flex items-center text-fubon-blue border-fubon-blue hover:bg-fubon-lightBlue"
+          >
+            <PlusCircle className="mr-1 h-4 w-4" />
+            新增其他學歷
+          </Button>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
           {/* Left Column */}
@@ -368,6 +427,7 @@ const EducationFormC = () => {
                     <SelectValue placeholder="請選擇" />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="">請選擇</SelectItem>
                     <SelectItem value="博士">博士</SelectItem>
                     <SelectItem value="碩士">碩士</SelectItem>
                     <SelectItem value="大學">大學</SelectItem>
@@ -406,6 +466,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="台灣">台灣</SelectItem>
                   <SelectItem value="美國">美國</SelectItem>
                   <SelectItem value="日本">日本</SelectItem>
@@ -428,6 +489,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="台灣大學">台灣大學</SelectItem>
                   <SelectItem value="國立清華大學">國立清華大學</SelectItem>
                   <SelectItem value="國立交通大學">國立交通大學</SelectItem>
@@ -453,6 +515,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="資訊工程學系">資訊工程學系</SelectItem>
                   <SelectItem value="企業管理學系">企業管理學系</SelectItem>
                   <SelectItem value="外語學系">外語學系</SelectItem>
@@ -475,6 +538,7 @@ const EducationFormC = () => {
                   <SelectValue placeholder="請選擇" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">請選擇</SelectItem>
                   <SelectItem value="畢業">畢業</SelectItem>
                   <SelectItem value="肆業">肆業</SelectItem>
                   <SelectItem value="在學">在學</SelectItem>
