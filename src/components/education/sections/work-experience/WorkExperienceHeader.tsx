@@ -12,9 +12,11 @@ const WorkExperienceHeader: React.FC<WorkExperienceHeaderProps> = ({
 }) => {
   return (
     <div className="flex justify-between items-center">
-      <h2 className="text-lg font-semibold text-fubon-blue border-l-4 border-fubon-blue pl-2">
-        工作經歷
-      </h2>
+      <div>
+        <h2 className="text-lg font-semibold text-fubon-blue border-l-4 border-fubon-blue pl-2">
+          工作經歷
+        </h2>
+      </div>
       <Button 
         type="button" 
         variant="outline" 

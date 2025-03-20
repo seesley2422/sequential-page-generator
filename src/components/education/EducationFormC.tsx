@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useFormContext } from '@/context/FormContextC';
 import HighestEducation from './sections/HighestEducation';
@@ -60,17 +61,16 @@ const EducationFormC = () => {
         </div>
       </div>
 
-      {/* Following sections will be implemented in the next phase */}
-      {/* Professional Certificates */}
+      {/* Group 29-32: Professional Certificates */}
       <ProfessionalCertificates />
 
-      {/* Certifications */}
+      {/* Group 33-36: Certifications */}
       <Certifications />
 
-      {/* Work Experience */}
+      {/* Group 37-44: Work Experience */}
       <WorkExperience />
 
-      {/* Salary Expectation */}
+      {/* Group 45: Salary Expectation */}
       <SalaryExpectation />
 
       {/* Language Abilities */}
