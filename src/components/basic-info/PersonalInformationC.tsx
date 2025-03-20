@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useFormContext } from '@/context/FormContextC';
 import { format } from 'date-fns';
@@ -13,6 +12,7 @@ import {
 } from '@/components/ui/popover';
 import PhotoUploader from './PhotoUploader';
 import MonthYearPicker from './MonthYearPicker';
+import { getAllCities, getDistrictsByCity } from '@/utils/locationData';
 
 const PersonalInformationC = () => {
   const { state, dispatch } = useFormContext();
