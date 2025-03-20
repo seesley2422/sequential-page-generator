@@ -40,8 +40,11 @@ export interface FormState {
       name: string;
       department: string;
       degree: string;
+      country: string;
       graduationStatus: string;
-      graduationDate: string;
+      startDate: string;
+      endDate: string;
+      otherDegree?: string;
     }[];
   };
   workExperience: {
