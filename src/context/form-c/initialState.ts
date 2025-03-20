@@ -123,6 +123,7 @@ export const initialState: FormState = {
       },
       otherTest: [
         {
+          id: uuidv4(),
           name: '',
           otherName: '',
           score: '',

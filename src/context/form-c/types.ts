@@ -87,6 +87,7 @@ export interface FormState {
         date: string;
       };
       otherTest: {
+        id?: string;
         name: string;
         otherName: string;
         score: string;
