@@ -26,6 +26,16 @@ const PreviewC = () => {
     // Redirect to complete page
     navigate('/complete');
   };
+
+  // Helper function to get university info
+  const getHighestEducation = () => {
+    if (state.education.universities.length > 0) {
+      return state.education.universities[0];
+    }
+    return null;
+  };
+  
+  const highestEducation = getHighestEducation();
   
   return (
     <div className="animate-fade-in">
@@ -45,19 +55,19 @@ const PreviewC = () => {
           </div>
           <div>
             <p className="text-sm text-gray-500">性別</p>
-            <p>{state.basicInfo.gender || '-'}</p>
+            <p>{state.basicInfo.identityNumber && state.basicInfo.identityNumber.charAt(1) === '1' ? '男' : '女'}</p>
           </div>
           <div>
             <p className="text-sm text-gray-500">身分證字號</p>
-            <p>{state.basicInfo.idNumber || '-'}</p>
+            <p>{state.basicInfo.identityNumber || '-'}</p>
           </div>
           <div>
             <p className="text-sm text-gray-500">出生日期</p>
-            <p>{state.basicInfo.birthDate || '-'}</p>
+            <p>{state.basicInfo.birthdate || '-'}</p>
           </div>
           <div>
             <p className="text-sm text-gray-500">手機號碼</p>
-            <p>{state.basicInfo.mobilePhone || '-'}</p>
+            <p>{state.basicInfo.mobilePhone ? `${state.basicInfo.mobilePhone}-${state.basicInfo.mobilePhoneNumber}` : '-'}</p>
           </div>
           <div>
             <p className="text-sm text-gray-500">Email</p>
@@ -74,15 +84,15 @@ const PreviewC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <p className="text-sm text-gray-500">教育程度</p>
-              <p>{state.education.highestEducation.level || '-'}</p>
+              <p>{state.education.highestDegree || '-'}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">學校名稱</p>
-              <p>{state.education.highestEducation.schoolName || '-'}</p>
+              <p>{highestEducation?.name || '-'}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">科系</p>
-              <p>{state.education.highestEducation.department || '-'}</p>
+              <p>{highestEducation?.department || '-'}</p>
             </div>
           </div>
           
