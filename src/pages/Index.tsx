@@ -36,6 +36,12 @@ const Index = () => {
                 >
                   應徵 B版本
                 </Link>
+                <Link 
+                  to="/apply-c"
+                  className="fubon-btn-primary flex items-center"
+                >
+                  應徵 C版本
+                </Link>
                 <button className="fubon-btn-secondary">
                   加入收藏
                 </button>

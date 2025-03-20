@@ -9,6 +9,8 @@ import ApplicationForm from './pages/ApplicationForm';
 import Complete from './pages/Complete';
 import { FormProvider as FormProviderB } from './context/form-b/FormContextB';
 import ApplicationFormB from './pages/ApplicationFormB';
+import { FormProvider as FormProviderC } from './context/form-c/FormContextC';
+import ApplicationFormC from './pages/ApplicationFormC';
 
 function App() {
   return (
@@ -35,6 +37,16 @@ function App() {
               <FormProviderB>
                 <ApplicationFormB />
               </FormProviderB>
+            } 
+          />
+          
+          {/* Version C routes */}
+          <Route 
+            path="/apply-c" 
+            element={
+              <FormProviderC>
+                <ApplicationFormC />
+              </FormProviderC>
             } 
           />
           
