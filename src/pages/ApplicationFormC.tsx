@@ -7,6 +7,7 @@ import StepIndicator from '@/components/StepIndicator';
 import { useFormContext } from '@/context/FormContextC';
 import BasicInfoC from './BasicInfoC';
 import EducationC from './EducationC';
+import AutobiographyC from './AutobiographyC';
 import { Button } from '@/components/ui/button';
 
 const steps = [
@@ -33,7 +34,7 @@ const ApplicationFormC = () => {
       case 2:
         return <EducationC />;
       case 3:
-        return <div>自傳 - 待實作</div>;
+        return <AutobiographyC />;
       case 4:
         return <div>上傳檔案 - 待實作</div>;
       case 5:
