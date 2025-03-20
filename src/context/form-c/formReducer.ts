@@ -66,6 +66,114 @@ export function formReducer(state: FormState, action: FormAction): FormState {
           ),
         },
       };
+    case 'ADD_PROFESSIONAL_CERTIFICATE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          professionalCertificates: [...state.education.professionalCertificates, 
+            { ...action.payload, id: action.payload.id || uuidv4() }
+          ],
+        },
+      };
+    case 'REMOVE_PROFESSIONAL_CERTIFICATE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          professionalCertificates: state.education.professionalCertificates.filter(
+            cert => cert.id !== action.payload
+          ),
+        },
+      };
+    case 'ADD_CERTIFICATE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          certificates: [...state.education.certificates, 
+            { ...action.payload, id: action.payload.id || uuidv4() }
+          ],
+        },
+      };
+    case 'REMOVE_CERTIFICATE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          certificates: state.education.certificates.filter(
+            cert => cert.id !== action.payload
+          ),
+        },
+      };
+    case 'ADD_WORK_EXPERIENCE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          workExperiences: [...state.education.workExperiences, 
+            { ...action.payload, id: action.payload.id || uuidv4() }
+          ],
+        },
+      };
+    case 'REMOVE_WORK_EXPERIENCE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          workExperiences: state.education.workExperiences.filter(
+            exp => exp.id !== action.payload
+          ),
+        },
+      };
+    case 'ADD_OTHER_LANGUAGE_TEST':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          languages: {
+            ...state.education.languages,
+            otherTest: [...state.education.languages.otherTest, action.payload],
+          },
+        },
+      };
+    case 'REMOVE_OTHER_LANGUAGE_TEST':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          languages: {
+            ...state.education.languages,
+            otherTest: state.education.languages.otherTest.filter((_, index) => index !== action.payload),
+          },
+        },
+      };
+    case 'ADD_OTHER_LANGUAGE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          languages: {
+            ...state.education.languages,
+            otherLanguages: [...state.education.languages.otherLanguages, 
+              { ...action.payload, id: action.payload.id || uuidv4() }
+            ],
+          },
+        },
+      };
+    case 'REMOVE_OTHER_LANGUAGE':
+      return {
+        ...state,
+        education: {
+          ...state.education,
+          languages: {
+            ...state.education.languages,
+            otherLanguages: state.education.languages.otherLanguages.filter(
+              lang => lang.id !== action.payload
+            ),
+          },
+        },
+      };
     case 'UPDATE_WORK_EXPERIENCE':
       return {
         ...state,
@@ -102,7 +210,7 @@ export function formReducer(state: FormState, action: FormAction): FormState {
           ...action.payload,
         },
       };
-    case 'ADD_CERTIFICATE':
+    case 'ADD_CERTIFICATE_OLD':
       return {
         ...state,
         certification: {
@@ -112,7 +220,7 @@ export function formReducer(state: FormState, action: FormAction): FormState {
           ],
         },
       };
-    case 'REMOVE_CERTIFICATE':
+    case 'REMOVE_CERTIFICATE_OLD':
       return {
         ...state,
         certification: {
